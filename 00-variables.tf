@@ -13,7 +13,13 @@ variable "name" {
 }
 
 variable "security_groups" {
-  type = list(string)
+  type    = list(string)
+  default = []
+}
+
+variable "security_group_ids" {
+  type    = list(string)
+  default = []
 }
 
 variable "lifecycle_policy" {

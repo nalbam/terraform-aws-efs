@@ -39,11 +39,11 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "this" {
-  count = length(var.security_groups)
+  count = length(local.security_group_ids)
 
   description              = "Allow worker to communicate with efs"
   security_group_id        = aws_security_group.this.id
-  source_security_group_id = var.security_groups[count.index]
+  source_security_group_id = local.security_group_ids[count.index]
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "-1"
